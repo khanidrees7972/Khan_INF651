@@ -1,0 +1,188 @@
+// 1) Create an object named webDev that cannot be reassigned and
+// contains the 3 key-value pairs:
+// frame: "HTML", style: "CSS", logic: "JavaScript"
+const webDev = {
+  frame: "HTML",
+  style: "CSS",
+  logic: "JavaScript"
+};
+console.log("Q1:"); //Tests Question 1
+for (const key in webDev){
+  console.log("\t" + key + " : " + webDev[key]);
+  }
+
+// 2) Create an object named pizza with a property named crust.
+// Set the crust value to "thin". Add a method named setCrust
+// to the object that accepts a parameter named crustType.
+// The method should change the crust value of the object to
+// the value of the parameter.
+// Hint: keyword to use is "this".
+
+const pizza = {
+  crust: "Thin",
+  setCrust(crustType){
+    this.crust = crustType;
+  }
+};
+
+let Q2 = Object.create(pizza); //Tests Question 2
+console.log("Q2: Pizza before change: " + Q2.crust);
+Q2.setCrust("Hand Tossed");
+console.log("Q2: Pizza after change: " + Q2.crust);
+
+
+// 3) Create a function named doesItContain that accepts two
+// parameters: "key" and "obj". The function should return
+// boolean data to indicate if the key exists in the object.
+function doesItContain(key, obj){
+  let keyArr = Object.keys(obj);
+  let i = 0;
+  for (i=0; i < keyArr.length; i++){
+    if (keyArr[i] == key){
+      return true;
+    }
+  }
+  return false;
+}
+
+const person = {//Tests Question 3
+  name: "Daniel",
+  favColor: "Orange",
+  favAnimal: "Pangolin"
+}; 
+if (doesItContain("name", person)){
+  console.log("Q3: The object contains the given key.");
+}
+else{
+  console.log("Q3: The object does not contain the given key.");
+}
+
+
+// 4) Create a function named introduceTheActors that accepts
+// the array of objects named actors (see below) as a parameter.
+// Name the parameter "actorArray". The function should loop
+// through the actors array and create the following statement
+// for each actor:
+// "Hi, I'm {actorName} and I was in {movieName}."
+////////
+// Example: "Hi, I'm Keanu and I was in The Matrix."
+////////
+// Store each statement in an array that is returned when
+// the function is complete. The returned array should have
+// all of the created statements inside.
+const actors = [
+    { name: "Keanu", movie: "The Matrix" },
+    { name: "Amy", movie: "Arrival" },
+    { name: "Leonardo", movie: "The Wolf of Wall Street" },
+    { name: "Sigourney", movie: "Alien" },
+    { name: "Jeff", movie: "The Big Lebowski" },
+  ];
+  ///////// Do not change the above array of objects /////////
+
+  function introduceTheActors(actorArray){
+    let introductions = [];
+    let i = 0;
+    for (i=0; i < actorArray.length; i++){
+      introductions.push("Hi, I'm " + actorArray[i].name + " and I was in " + actorArray[i].movie + ".");
+    }
+    return introductions;
+  }
+
+  let introList = introduceTheActors(actors);//Tests Question 4
+  let j = 0;
+  console.log("Q4 Test:");
+  for(j=0; j < introList.length; j++){
+    console.log("\t" + introList[j] + "\n");
+  }
+  
+  // 5) Create an object named techCompanies that has the following
+  // key-value pairs:
+  // Microsoft: "Bill Gates", Amazon: "Jeff Bezos", Tesla: "Elon Musk",
+  // Facebook: "Mark Zuckerberg", Apple: "Steve Jobs"
+  // Add a method to the techCompanies object named founderLookup
+  // that accepts companyName as a parameter and returns
+  // the name of the founder.
+  const techCompanies = {
+    Microsoft: "Bill Gates",
+    Amazon: "Jeff Bezos",
+    Tesla: "Elon Musk",
+    Facebook: "Mark Zukerberg",
+    Apple: "Steve Jobs",
+    founderLookup(companyName){
+      return this[companyName];
+    }
+  }
+
+  let Q5Company = "Microsoft";
+  console.log("Q5: The founder of " + Q5Company + " is " + techCompanies.founderLookup(Q5Company) + ".");
+
+  // 6) Utlizing the same techCompanies object from #5,
+  // Create a function named storeFounders that accepts
+  // an object and loops through the values. Store the
+  // name of each founder in a new array that is returned
+  // by the function when the loop is complete.
+function storeFounders(companyList){
+  let founderArr=[];
+  for (const key in companyList){
+    if (typeof companyList[key] === 'string'){ //Ensures if do not pick up the method in the lists
+    founderArr.push(companyList[key])
+    }
+  }
+  return founderArr;
+}
+console.log("Q6:") //Test Question 6
+let Q6test = storeFounders(techCompanies);
+for (j=0; j < Q6test.length; j++){
+  console.log("\t" + Q6test[j]);
+}
+  
+  // 7) Create a function named goToSecondClass that accepts
+  // a destructured object as a parameter. The parameter
+  // extracts the "secondHour" property of the object.
+  // The function should return this statement:
+  // "Time to go to {property_value} class!"
+  //////////
+  // Example: "Time to go to Programming class!"
+  /////////
+  // Test your function with this object:
+  const myClasses = {
+    firstHour: "Ethics",
+    secondHour: "Programming",
+    thirdHour: "Biology",
+  };
+  ////////// Don't change the above object
+  function goToSecondClass({secondHour}){
+    return "Time to go to " + secondHour + " class!";
+  }
+
+  console.log("Q7: " + goToSecondClass(myClasses));//Test Question 7
+
+  // 8a) Create a generic object named pie.
+  // Give the pie object a property named "slices"
+  // that has a value of 8. Give the pie object
+  // a method named "taste". Have the taste method
+  // return "Wow!".
+  /////
+const pie = {
+  slices: 8,
+  taste(){
+    return "Wow!";
+  }
+};
+
+console.log("Q8a: The generic pie has " + pie.slices + " slices and tastes great! " + pie.taste());//Tests Question 8a
+  // 8b) Create a new object named "blueBerryPie"
+  // that uses the pie object as a constructor
+  // to inherit its property and method. Use
+  // dot notation to add a flavor property to
+  // the "blueBerryPie" object that has a value of
+  // "blueberry". Also, update the taste method of
+  // this new object to return "Delicious!"
+  ////////////////
+  const blueBerryPie = Object.create(pie);
+blueBerryPie.flavor = "blueberry";
+blueBerryPie.taste = function (){
+  return "Delicious!";
+};
+
+console.log("Q8b. The new pie still has " + blueBerryPie.slices + " slices and is " + blueBerryPie.flavor + ". " + blueBerryPie.taste());
