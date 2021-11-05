@@ -1,0 +1,219 @@
+1)
+
+function getTheTable()
+ {
+    return doc.getElementById('myTable');
+ }
+
+doc.getElementById() this function will accepts the id of the element want to access
+
+2)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Questions</title>
+</head>
+<body>
+
+    <p>ouside of myPage section</p>
+    
+    <section class="myPage">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, aspernatur!</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+        <p>Lorem ipsum dolor sit.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur id excepturi nisi.</p>
+        <table>
+            <tr>
+                <td>lorem</td>
+                <td>lorem</td>
+            </tr>
+            <tr>
+                <td>lorem ipsum</td>
+                <td>lorem ipsum</td>
+            </tr>
+        </table>
+    </section>
+    <script>
+        const myPageElem = document.querySelector("section");
+      
+        function getAllParagraphs() 
+        {
+            return myPageElem.querySelectorAll("p");
+        }
+        
+        function changeBgColor(color)
+        {
+            myPageElem.style.backgroundColor = `${color}`;
+            return myPageElem; 
+        }
+       
+        function createBorders()
+        {
+            const table = myPageElem.querySelector("table"); 
+            const tableCells = table.querySelectorAll("td"); 
+            
+            for (let i = 0; i < tableCells.length; i++)
+            {
+                tableCells[i].style.border = "2px solid #000";
+            }
+
+            return table; 
+        }
+        
+    </script>
+</body>
+</html>
+
+
+3)
+
+
+
+function makeItalic() 
+{
+    const paras = document.querySelectorAll('.even');
+
+ 
+    paras.forEach( (para) => 
+    {
+
+        para.style.fontStyle = "italic";
+
+    })
+
+   return paras;      
+
+}
+
+
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph Page</title>
+</head>
+
+<body>
+
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, tempore harum. Nulla magni explicabo culpa, quam minus quo hic nisi sequi dignissimos expedita a, neque earum blanditiis illum incidunt facere.
+    </p>
+
+    <!-- Only the p elements with class as 'even' will be manipulated -->
+
+    <p class="even">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam autem quos atque corrupti hic eaque, mollitia ad, error et doloribus iure possimus ullam temporibus ab alias blanditiis? Quis, corporis laborum!
+    </p>
+
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, tempore harum. Nulla magni explicabo culpa, quam minus quo hic nisi sequi dignissimos expedita a, neque earum blanditiis illum incidunt facere.
+    </p>
+
+    <p class="even">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, tempore harum. Nulla magni explicabo culpa, quam minus quo hic nisi sequi dignissimos expedita a, neque earum blanditiis illum incidunt facere.
+    </p>
+
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, tempore harum. Nulla magni explicabo culpa, quam minus quo hic nisi sequi dignissimos expedita a, neque earum blanditiis illum incidunt facere.
+    </p>
+
+    <p class="even">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, tempore harum. Nulla magni explicabo culpa, quam minus quo hic nisi sequi dignissimos expedita a, neque earum blanditiis illum incidunt facere.
+    </p>
+
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, tempore harum. Nulla magni explicabo culpa, quam minus quo hic nisi sequi dignissimos expedita a, neque earum blanditiis illum incidunt facere.
+    </p>
+
+    <p class="even">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, tempore harum. Nulla magni explicabo culpa, quam minus quo hic nisi sequi dignissimos expedita a, neque earum blanditiis illum incidunt facere.
+    </p>
+
+    <!-- Following is the JavaSript method to manipulate the p elements with class even -->
+
+    <script>
+        function makeItalic() 
+       {
+
+            const paras = document.querySelectorAll('.even');
+
+            paras.forEach((para) => 
+            {
+
+
+                para.style.fontStyle = "italic";
+
+            })
+
+            return paras;
+
+        }
+
+        makeItalic()
+    </script>
+
+</body>
+
+</html>
+
+
+5)
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+     
+      function getTheListItem(num1, num2) 
+      {
+        var data = document.querySelector("ul:nth-of-type(" + num1 + ") li:nth-child(" + num2 + ")" );
+        document.querySelector("div").innerHTML = data.innerHTML;
+      }
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+
+    <ul>
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+      <li>D</li>
+    </ul>
+    <ul>
+      <li>a</li>
+      <li>b</li>
+      <li>c</li>
+      <li>d</li>
+    </ul>
+    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+      <li>four</li>
+    </ul>
+    <!-- when button clicks then the getTheListItem(2,2) function will calls -->
+    <button onclick="getTheListItem(2,2)">click me to call function</button>
+    <div></div>
+  </body>
+</html>
