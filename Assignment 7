@@ -217,3 +217,11 @@ index.html
     <div></div>
   </body>
 </html>
+
+function changeBGColor(color) {
+      const page = document.querySelector("myPage");
+      page.style.backgroundColor = color;
+      return page;
+    }
+
+    changeBGColor("black");
